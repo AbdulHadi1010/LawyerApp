@@ -2,33 +2,52 @@ package com.example.myapplication;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeScreenAcitivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d(TAG, "onCreate: Inside HomeScreen");
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen_acitivity);
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        replaceFragment(new HomeFragment());
 
-        // Begin a new FragmentTransaction
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if (item.getItemId() == R.id.action_home) {
+                    // Replace fragment with home fragment
+                    replaceFragment(new HomeFragment());
+                    return true;
+                } else if (item.getItemId() == R.id.action_all) {
+                    // Replace fragment with profile fragment
+                    replaceFragment(new PostFragment());
+                    return true;
+                } else if (item.getItemId() == R.id.action_profile) {
+                    // Replace fragment with settings fragment
+                    replaceFragment(new ProfileFragment());
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
+    }
 
-        // Create a new instance of the fragment
-        PostFragment myFragment = new PostFragment();
-
-        // Replace the contents of the container with the new fragment
-        fragmentTransaction.replace(R.id.fragment_container, myFragment);
-
-        // Commit the transaction
-        fragmentTransaction.commit();
+    private void replaceFragment(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, fragment)
+                .commit();
     }
 }

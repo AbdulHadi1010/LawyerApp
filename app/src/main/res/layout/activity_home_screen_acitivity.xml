@@ -8,42 +8,48 @@
 
 
     <RelativeLayout
+        android:background="@color/backgroundColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/black"
         tools:ignore="MissingConstraints">
-
-        <!-- Banner Layout -->
-        <LinearLayout
-            android:id="@+id/bannerLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@color/banner_color"
-            android:gravity="center_vertical"
-            android:padding="16dp">
-
-            <TextView
-                android:id="@+id/editText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="All Lawyers"
-                android:textSize="30dp"
-                android:layout_marginStart="5dp"
-                android:textColor="@android:color/white"/>
-
-        </LinearLayout>
 
 
         <FrameLayout
             android:id="@+id/fragment_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/bannerLayout" />
-
+             />
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:itemTextColor="@color/dark_blue7"
+            android:background="@color/white"
+            android:layout_alignParentBottom="true"
+            app:menu="@menu/bottom_navigation_menu" />
     </RelativeLayout>
 
 
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--        <LinearLayout-->
+    <!--            android:id="@+id/bannerLayout"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:orientation="horizontal"-->
+    <!--            android:background="@color/banner_color"-->
+    <!--            android:gravity="center_vertical"-->
+    <!--            android:padding="16dp">-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/editText"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:text="All Lawyers"-->
+    <!--                android:textSize="30dp"-->
+    <!--                android:layout_marginStart="5dp"-->
+    <!--                android:textColor="@android:color/white"/>-->
+
+    <!--        </LinearLayout>-->

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30sp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="200sp"
+            android:layout_height="200sp"
+            android:src="@drawable/pic" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20sp"
+            android:text="John Doe"
+            android:textColor="@color/dark_blue7"
+            android:textSize="40sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/dark_blue7"
+            android:layout_marginTop="5sp"
+            android:text="23 years old"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/green_7"
+            android:layout_marginTop="60sp"
+            android:text="Cases Closed: 5"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/green_7"
+            android:layout_marginTop="5sp"
+            android:text="Agents Hired: 3"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="350sp"
+            android:layout_marginTop="90sp"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+            <Button
+                android:layout_width="150sp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_weight="1"
+                android:backgroundTint="@color/green_7"
+                android:text="Switch Account"/>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+
+                android:layout_weight="10"/>
+
+            <Button
+                android:layout_width="140sp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_weight="1"
+                android:backgroundTint="@color/green_7"
+                android:text="Logout"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</FrameLayout>
