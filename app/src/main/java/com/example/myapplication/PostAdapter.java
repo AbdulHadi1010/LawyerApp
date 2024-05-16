@@ -1,11 +1,14 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.location.Address;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -89,6 +92,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
         // Bind data to views
         String username = names.get(position);
         String profileUrl = profileImages.get(position);
@@ -97,7 +101,28 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         String address = addresses.get(position);
         String Fee = String.valueOf(randomNumbers2.get(position));
         holder.bind(username, Qualification, profileUrl, experience, address, Fee);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Get the position of the item that was clicked
+                int clickedPosition = holder.getAdapterPosition();
+                String clickedName = holder.usernameTextView.getText().toString();
+                String clickedQualification = holder.qualifyText.getText().toString();
+                String clickedExperience = holder.expText.getText().toString();
+                String clickedAddress = holder.AddressText.getText().toString();
+                String clickedFee = holder.FeeText.getText().toString();
 
+                // Create an Intent to start the next activity
+                Intent intent = new Intent(view.getContext(), Contact.class);
+                // Pass data to the next activity using Intent extras
+                intent.putExtra("name", clickedName);
+                intent.putExtra("qualification", clickedQualification);
+                intent.putExtra("experience", clickedExperience);
+                intent.putExtra("address", clickedAddress);
+                intent.putExtra("fee", clickedFee);
+                view.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -105,7 +130,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         return names.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         // Define views
         private final TextView usernameTextView;
         private TextView qualifyText;
@@ -113,6 +138,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         private TextView expText;
         private TextView AddressText;
         private TextView FeeText;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             // Initialize views
@@ -126,11 +152,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         }
 
 
-
         public void bind(String data, String qualificationText, String profileUrl, String Exp, String Address, String Fee) {
             // Bind data to views
             usernameTextView.setText(data);
-            // Set click listeners for buttons if needed
             qualifyText.setText(qualificationText);
             Picasso.get().load(profileUrl).into(imageView);
             expText.setText(Exp+" Years of expereince");
@@ -138,5 +162,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             FeeText.setText("$"+Fee);
 
         }
+
+
     }
 }

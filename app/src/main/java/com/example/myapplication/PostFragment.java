@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,22 +11,27 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
 
 
 public class PostFragment extends Fragment {
+      TextView usernameTextView;
+     TextView qualifyText;
+     ImageView imageView;
+     TextView expText;
+     TextView AddressText;
+     TextView FeeText;
+    LinearLayout mainLayout;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
     public PostFragment() {
         // Required empty public constructor
     }
@@ -53,15 +59,41 @@ public class PostFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.post_fragment, container, false);
-
-        // Set up RecyclerView
+        mainLayout = view.findViewById(R.id.mainLayout);
+        usernameTextView = view.findViewById(R.id.editText);
+        qualifyText = view.findViewById(R.id.qualifyText);
+        imageView =  view.findViewById(R.id.imageView);
+        expText = view.findViewById(R.id.expText);
+        AddressText= view.findViewById(R.id.AddressText);
+        FeeText= view.findViewById(R.id.FeeText);
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        // Create and set adapter
         PostAdapter adapter = new PostAdapter();
         recyclerView.setAdapter(adapter);
+        mainLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = usernameTextView.getText().toString();
+                String qualifytext = qualifyText.getText().toString();
+                String exptext = expText.getText().toString();
+                String addressText = AddressText.getText().toString();
+                String feeText = FeeText.getText().toString();
 
+                // Create an Intent to start the second activity
+                Intent intent = new Intent(getActivity(), Contact.class);
+                // Pass the data to the second activity using Intent extras
+                intent.putExtra("name", name);
+                intent.putExtra("qualifyText", qualifytext);
+                intent.putExtra("expText", exptext);
+                intent.putExtra("addressText", addressText);
+                intent.putExtra("feeText", feeText);
+                startActivity(intent);
+            }
+        });
         return view;
+
+
     }
+
 }
