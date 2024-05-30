@@ -24,6 +24,8 @@
             android:layout_height="wrap_content"
             android:text="Handpick Lawyers at Your Own Conveince"
             android:textSize="35sp" />
+
+
     </LinearLayout>
 
 </FrameLayout>

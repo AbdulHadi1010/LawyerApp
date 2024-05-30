@@ -79,6 +79,13 @@
                 android:backgroundTint="@color/green_7"
                 android:text="Logout"/>
         </LinearLayout>
+        <Button
+            android:id="@+id/productGoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:text="Go to Products Page"/>
     </LinearLayout>
 
 

@@ -34,22 +34,17 @@ public class LoginActivity extends AppCompatActivity {
             String email = emailEditText.getText().toString().trim();
             String password = passwordEditText.getText().toString().trim();
 
-            if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-                Toast.makeText(LoginActivity.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            if (email.equals("admin@gmail.com") && password.equals("admin")) {
-                SharedPreferences sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putString("email", email);
-                editor.putString("password", password);
-                editor.apply();
+//            if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
+//                Toast.makeText(LoginActivity.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+//                return;
+//            }
+//
+//            if (email.equals("admin@gmail.com") && password.equals("admin")) {
                 Toast.makeText(LoginActivity.this, "Sign in", Toast.LENGTH_SHORT).show();
                 navigateToMainActivity();
-            } else {
+//            } else {
                 Toast.makeText(LoginActivity.this, "Invalid email or password", Toast.LENGTH_SHORT).show();
-            }
+//            }
         });
 
         signUpTextView.setOnClickListener(v -> navigateToSignupActivity());
