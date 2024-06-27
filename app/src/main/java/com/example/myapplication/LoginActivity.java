@@ -39,12 +39,12 @@ public class LoginActivity extends AppCompatActivity {
 //                return;
 //            }
 //
-//            if (email.equals("admin@gmail.com") && password.equals("admin")) {
+            if (email.equals("admin@gmail.com") && password.equals("admin")) {
                 Toast.makeText(LoginActivity.this, "Sign in", Toast.LENGTH_SHORT).show();
                 navigateToMainActivity();
-//            } else {
+            } else {
                 Toast.makeText(LoginActivity.this, "Invalid email or password", Toast.LENGTH_SHORT).show();
-//            }
+            }
         });
 
         signUpTextView.setOnClickListener(v -> navigateToSignupActivity());
